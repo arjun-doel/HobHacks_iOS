@@ -6,24 +6,58 @@
 //
 
 import SwiftUI
+import Awesome
 
 struct HomeView: View {
+    @State private var date: String = ""
     var body: some View {
-        ScrollView {
-            VStack {
-                cardList
+        ZStack(alignment: .top) {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    cardList
+                }
             }
+            .overlay(
+                header
+            )
+        }
+    }
+    
+    var header: some View {
+        VStack(alignment: .leading) {
+            Text(date.uppercased())
+                .font(.caption)
+            HStack {
+                Text("HobHacks")
+                    .font(.largeTitle)
+                Awesome.Solid.hamburger.image
+                    .foregroundColor(.brown)
+                    .font(.title)
+            }
+        }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .padding()
+        .onAppear {
+            date = Date.now.formatted(.dateTime.weekday(.wide).month().day())
         }
     }
     
     var cardList: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center, spacing: 0) {
-                ForEach(0..<3) { item in
-                    CardComponent()
+                ForEach(0..<5) { item in
+                    GeometryReader { geo in
+                        let minX = geo.frame(in: .global).minX
+                        CardComponent()
+                            .frame(width: 330, height: 400)
+                            .rotation3DEffect(.degrees(minX / -20), axis: (x: 0, y: 1, z: 0))
+                    }
+                    .frame(width: 300, height: 400)
+                    .padding()
                 }
             }
             .padding(.vertical, 20)
+            .edgesIgnoringSafeArea(.all)
         }
     }
 }

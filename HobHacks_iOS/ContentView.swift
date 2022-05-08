@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack() {
             TabView {
                 NavigationView {
                     HomeView()
+                        .navigationBarHidden(true)
                 }
                 .tabItem {
                     Image(systemName: "house")
