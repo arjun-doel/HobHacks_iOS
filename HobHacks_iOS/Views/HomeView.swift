@@ -17,6 +17,9 @@ struct HomeView: View {
                     cardList
                 }
             }
+            .safeAreaInset(edge: .top, content: {
+                Color.clear.frame(height: 70)
+            })
             .overlay(
                 header
             )
@@ -34,7 +37,9 @@ struct HomeView: View {
                     .foregroundColor(.brown)
                     .font(.title)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .frame(height: 70)
         .frame(maxHeight: .infinity, alignment: .top)
         .padding()
         .onAppear {
