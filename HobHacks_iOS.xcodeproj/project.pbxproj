@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		72C94985282821D20037B76A /* CardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C94984282821D20037B76A /* CardComponent.swift */; };
+		72C94988282826E00037B76A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C94987282826E00037B76A /* HomeView.swift */; };
+		72C9498A282827920037B76A /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C94989282827920037B76A /* AccountView.swift */; };
+		72C9498C282828300037B76A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9498B282828300037B76A /* SearchView.swift */; };
 		72EF609728281416001A42CD /* HobHacks_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EF609628281416001A42CD /* HobHacks_iOSApp.swift */; };
 		72EF609928281416001A42CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EF609828281416001A42CD /* ContentView.swift */; };
 		72EF609B28281417001A42CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72EF609A28281417001A42CD /* Assets.xcassets */; };
@@ -16,6 +19,9 @@
 
 /* Begin PBXFileReference section */
 		72C94984282821D20037B76A /* CardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponent.swift; sourceTree = "<group>"; };
+		72C94987282826E00037B76A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		72C94989282827920037B76A /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		72C9498B282828300037B76A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		72EF609328281416001A42CD /* HobHacks_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HobHacks_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72EF609628281416001A42CD /* HobHacks_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobHacks_iOSApp.swift; sourceTree = "<group>"; };
 		72EF609828281416001A42CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +48,16 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		72C94986282826D70037B76A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				72C94987282826E00037B76A /* HomeView.swift */,
+				72C94989282827920037B76A /* AccountView.swift */,
+				72C9498B282828300037B76A /* SearchView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		72EF608A28281416001A42CD = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +79,7 @@
 			children = (
 				72EF609628281416001A42CD /* HobHacks_iOSApp.swift */,
 				72EF609828281416001A42CD /* ContentView.swift */,
+				72C94986282826D70037B76A /* Views */,
 				72C94983282821C30037B76A /* Components */,
 				72EF609A28281417001A42CD /* Assets.xcassets */,
 				72EF609C28281417001A42CD /* Preview Content */,
@@ -149,8 +166,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				72C94985282821D20037B76A /* CardComponent.swift in Sources */,
+				72C94988282826E00037B76A /* HomeView.swift in Sources */,
 				72EF609928281416001A42CD /* ContentView.swift in Sources */,
 				72EF609728281416001A42CD /* HobHacks_iOSApp.swift in Sources */,
+				72C9498C282828300037B76A /* SearchView.swift in Sources */,
+				72C9498A282827920037B76A /* AccountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
