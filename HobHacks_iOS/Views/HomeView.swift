@@ -9,7 +9,6 @@ import SwiftUI
 import Awesome
 
 struct HomeView: View {
-    @State private var date: String = ""
     @State private var hasScrolled: Bool = false
     
     var body: some View {
@@ -24,43 +23,9 @@ struct HomeView: View {
                 Color.clear.frame(height: 50)
             })
             .overlay(
-                header
+                HeaderComponent(hasScrolled: $hasScrolled)
             )
         }
-    }
-    
-    var header: some View {
-        ZStack {
-            Color.clear
-                .background(.ultraThickMaterial)
-                .blur(radius: 30)
-                .opacity(hasScrolled ? 1 : 0)
-            VStack(alignment: .leading) {
-                
-                Text(date.uppercased())
-                    .font(.caption)
-                HStack {
-                    if !hasScrolled {
-                        Text("Featured Today")
-                            .font(.largeTitle)
-                        Awesome.Solid.hamburger.image
-                            .foregroundColor(.brown)
-                            .font(.title)
-                    } else {
-                        Awesome.Solid.hamburger.image
-                            .foregroundColor(.brown)
-                            .font(.title)
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .padding()
-            .onAppear {
-                date = Date.now.formatted(.dateTime.weekday(.wide).month().day())
-            }
-        }
-        .frame(height: 70)
-        .frame(maxHeight: .infinity, alignment: .top)
     }
     
     var cardList: some View {
@@ -82,6 +47,7 @@ struct HomeView: View {
         }
     }
     
+    // Track vertical scrolling and updates state hasScrolled to trigger animations.
     var scrollDetection: some View {
         GeometryReader { geo in
             Color.clear.preference(key: ScrollPreferenceKey.self, value: geo.frame(in: .named("scroll")).minY)
