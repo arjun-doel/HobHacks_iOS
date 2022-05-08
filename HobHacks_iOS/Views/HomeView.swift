@@ -11,7 +11,7 @@ import Awesome
 struct HomeView: View {
     @State private var date: String = ""
     @State private var hasScrolled: Bool = false
-
+    
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
@@ -21,7 +21,7 @@ struct HomeView: View {
                 }
             }
             .safeAreaInset(edge: .top, content: {
-                Color.clear.frame(height: 70)
+                Color.clear.frame(height: 50)
             })
             .overlay(
                 header
@@ -30,30 +30,37 @@ struct HomeView: View {
     }
     
     var header: some View {
-        VStack(alignment: .leading) {
-            Text(date.uppercased())
-                .font(.caption)
-            HStack {
-                if !hasScrolled {
-                    Text("HobHacks")
-                        .font(.largeTitle)
-                    Awesome.Solid.hamburger.image
-                        .foregroundColor(.brown)
-                        .font(.title)
-                } else {
-                    Awesome.Solid.hamburger.image
-                        .foregroundColor(.brown)
-                        .font(.title)
+        ZStack {
+            Color.clear
+                .background(.ultraThickMaterial)
+                .blur(radius: 30)
+                .opacity(hasScrolled ? 1 : 0)
+            VStack(alignment: .leading) {
+                
+                Text(date.uppercased())
+                    .font(.caption)
+                HStack {
+                    if !hasScrolled {
+                        Text("Featured Today")
+                            .font(.largeTitle)
+                        Awesome.Solid.hamburger.image
+                            .foregroundColor(.brown)
+                            .font(.title)
+                    } else {
+                        Awesome.Solid.hamburger.image
+                            .foregroundColor(.brown)
+                            .font(.title)
+                    }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+            .onAppear {
+                date = Date.now.formatted(.dateTime.weekday(.wide).month().day())
+            }
         }
         .frame(height: 70)
         .frame(maxHeight: .infinity, alignment: .top)
-        .padding()
-        .onAppear {
-            date = Date.now.formatted(.dateTime.weekday(.wide).month().day())
-        }
     }
     
     var cardList: some View {
@@ -82,7 +89,7 @@ struct HomeView: View {
         .frame(height: 0)
         .onPreferenceChange(ScrollPreferenceKey.self, perform: { value in
             withAnimation {
-                if value < 70 {
+                if value < 100 {
                     hasScrolled = true
                 } else {
                     hasScrolled = false
