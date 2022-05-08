@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardComponent: View {
     @State private var isLiked: Bool = false
+    @State private var showDetails: Bool = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -50,6 +51,12 @@ struct CardComponent: View {
                 }
         )
         .padding()
+        .onTapGesture {
+            showDetails = true
+        }
+        .sheet(isPresented: $showDetails) {
+            Text("Details")
+        }
     }
 }
 
