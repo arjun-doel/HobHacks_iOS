@@ -10,9 +10,12 @@ import Awesome
 
 struct HomeView: View {
     @State private var date: String = ""
+    @State private var hasScrolled: Bool = false
+
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
+                scrollDetection
                 VStack(alignment: .leading, spacing: 0) {
                     cardList
                 }
@@ -31,11 +34,17 @@ struct HomeView: View {
             Text(date.uppercased())
                 .font(.caption)
             HStack {
-                Text("HobHacks")
-                    .font(.largeTitle)
-                Awesome.Solid.hamburger.image
-                    .foregroundColor(.brown)
-                    .font(.title)
+                if !hasScrolled {
+                    Text("HobHacks")
+                        .font(.largeTitle)
+                    Awesome.Solid.hamburger.image
+                        .foregroundColor(.brown)
+                        .font(.title)
+                } else {
+                    Awesome.Solid.hamburger.image
+                        .foregroundColor(.brown)
+                        .font(.title)
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -64,6 +73,22 @@ struct HomeView: View {
             .padding(.vertical, 20)
             .edgesIgnoringSafeArea(.all)
         }
+    }
+    
+    var scrollDetection: some View {
+        GeometryReader { geo in
+            Color.clear.preference(key: ScrollPreferenceKey.self, value: geo.frame(in: .named("scroll")).minY)
+        }
+        .frame(height: 0)
+        .onPreferenceChange(ScrollPreferenceKey.self, perform: { value in
+            withAnimation {
+                if value < 70 {
+                    hasScrolled = true
+                } else {
+                    hasScrolled = false
+                }
+            }
+        })
     }
 }
 
