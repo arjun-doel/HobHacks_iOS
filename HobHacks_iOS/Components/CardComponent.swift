@@ -10,6 +10,7 @@ import SwiftUI
 struct CardComponent: View {
     @State private var isLiked: Bool = false
     @State private var showDetails: Bool = false
+    let impactMedium = UIImpactFeedbackGenerator(style: .medium)
 
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -45,7 +46,8 @@ struct CardComponent: View {
                 .font(.title)
                 .offset(x: 110, y: 135)
                 .onTapGesture {
-                    withAnimation {
+                    impactMedium.impactOccurred()
+                    withAnimation(.spring(response: 0.45, dampingFraction: 0.28, blendDuration: 0)) {
                         isLiked.toggle()
                     }
                 }

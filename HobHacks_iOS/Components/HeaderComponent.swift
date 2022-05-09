@@ -11,7 +11,8 @@ import Awesome
 struct HeaderComponent: View {
     @State private var date: String = ""
     @Binding var hasScrolled: Bool
-
+    @State private var showFavourites: Bool = false
+    
     var body: some View {
         ZStack {
             Color.clear
@@ -25,7 +26,7 @@ struct HeaderComponent: View {
                 HStack {
                     if !hasScrolled {
                         Text("Featured Today")
-                            .font(.largeTitle)
+                            .font(.system(size: 25)).bold()
                         Awesome.Solid.hamburger.image
                             .foregroundColor(.brown)
                             .font(.title)
@@ -34,6 +35,9 @@ struct HeaderComponent: View {
                             .foregroundColor(.brown)
                             .font(.title)
                     }
+                    
+                    Spacer()
+                    favouritesToolBar
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -44,6 +48,23 @@ struct HeaderComponent: View {
         }
         .frame(height: 70)
         .frame(maxHeight: .infinity, alignment: .top)
+    }
+    
+    var favouritesToolBar: some View {
+        Image(systemName: "heart.fill")
+            .foregroundColor(.pink)
+            .font(.title3)
+            .frame(width: 35, height: 35)
+            .background(.white)
+            .mask(Circle())
+            .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 2)
+            .offset(x: 0, y: hasScrolled ? -20 : -3)
+            .scaleEffect(showFavourites ? 1.2 : 1)
+            .onTapGesture {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.2, blendDuration: 0)) {
+                    showFavourites.toggle()
+                }
+            }
     }
 }
 

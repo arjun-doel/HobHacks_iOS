@@ -10,13 +10,16 @@ import Awesome
 
 struct HomeView: View {
     @State private var hasScrolled: Bool = false
+    private var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         ZStack(alignment: .top) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 scrollDetection
                 VStack(alignment: .leading, spacing: 0) {
-                    cardList
+                    featuredSection
+                    
+                    popularSection
                 }
             }
             .safeAreaInset(edge: .top, content: {
@@ -28,7 +31,7 @@ struct HomeView: View {
         }
     }
     
-    var cardList: some View {
+    var featuredSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center, spacing: 0) {
                 ForEach(0..<5) { item in
@@ -44,6 +47,24 @@ struct HomeView: View {
             }
             .padding(.vertical, 20)
             .edgesIgnoringSafeArea(.all)
+        }
+    }
+    
+    var popularSection: some View {
+        VStack(alignment: .leading, spacing: -8) {
+            HStack {
+                Awesome.Solid.star.image
+                    .foregroundColor(.systemYellow)
+                Text("Popular")
+                    .font(.title3).bold()
+            }
+            .padding()
+            
+            LazyVGrid(columns: twoColumnGrid) {
+                ForEach(0..<10) { item in
+                    PopularCard()
+                }
+            }
         }
     }
     
