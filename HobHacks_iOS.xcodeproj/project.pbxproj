@@ -10,6 +10,7 @@
 		7208F29128285CD000DC3183 /* HeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7208F29028285CD000DC3183 /* HeaderComponent.swift */; };
 		7208F29328285DE400DC3183 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7208F29228285DE400DC3183 /* Launch Screen.storyboard */; };
 		727BB72D2829A7B100774192 /* PopularCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727BB72C2829A7B100774192 /* PopularCard.swift */; };
+		727BB72F2829B51B00774192 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727BB72E2829B51B00774192 /* RecipeView.swift */; };
 		72C94985282821D20037B76A /* CardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C94984282821D20037B76A /* CardComponent.swift */; };
 		72C94988282826E00037B76A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C94987282826E00037B76A /* HomeView.swift */; };
 		72C9498A282827920037B76A /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C94989282827920037B76A /* AccountView.swift */; };
@@ -27,6 +28,7 @@
 		7208F29028285CD000DC3183 /* HeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderComponent.swift; sourceTree = "<group>"; };
 		7208F29228285DE400DC3183 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		727BB72C2829A7B100774192 /* PopularCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCard.swift; sourceTree = "<group>"; };
+		727BB72E2829B51B00774192 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		72C94984282821D20037B76A /* CardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponent.swift; sourceTree = "<group>"; };
 		72C94987282826E00037B76A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		72C94989282827920037B76A /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				72C94987282826E00037B76A /* HomeView.swift */,
 				72C94989282827920037B76A /* AccountView.swift */,
 				72C9498B282828300037B76A /* SearchView.swift */,
+				727BB72E2829B51B00774192 /* RecipeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				72C94988282826E00037B76A /* HomeView.swift in Sources */,
 				72EF609928281416001A42CD /* ContentView.swift in Sources */,
 				72C949A02828582C0037B76A /* PreferenceKeys.swift in Sources */,
+				727BB72F2829B51B00774192 /* RecipeView.swift in Sources */,
 				7208F29128285CD000DC3183 /* HeaderComponent.swift in Sources */,
 				727BB72D2829A7B100774192 /* PopularCard.swift in Sources */,
 				72EF609728281416001A42CD /* HobHacks_iOSApp.swift in Sources */,
