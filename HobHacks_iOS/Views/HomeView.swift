@@ -21,6 +21,9 @@ struct HomeView: View {
                     
                     popularSection
                 }
+                .refreshable {
+                    print("Refreshing")
+                }
             }
             .safeAreaInset(edge: .top, content: {
                 Color.clear.frame(height: 50)
