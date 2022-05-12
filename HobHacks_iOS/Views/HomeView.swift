@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Awesome
+//import Awesome
 
 struct HomeView: View {
     @State private var hasScrolled: Bool = false
@@ -44,7 +44,7 @@ struct HomeView: View {
                             .frame(width: 330, height: 400)
                             .rotation3DEffect(.degrees(minX / -20), axis: (x: 0, y: 1, z: 0))
                     }
-                    .frame(width: 300, height: 400)
+                    .frame(width: 280, height: 400)
                     .padding()
                 }
             }
@@ -56,8 +56,8 @@ struct HomeView: View {
     var popularSection: some View {
         VStack(alignment: .leading, spacing: -8) {
             HStack {
-                Awesome.Solid.star.image
-                    .foregroundColor(.systemYellow)
+                Image(systemName: "star.fill")
+                    .foregroundColor(.yellow)
                 Text("Popular")
                     .font(.title3).bold()
             }

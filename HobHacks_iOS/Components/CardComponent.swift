@@ -52,7 +52,7 @@ struct CardComponent: View {
                     }
                 }
         )
-        .padding()
+//        .padding()
         .onTapGesture {
             showDetails = true
         }

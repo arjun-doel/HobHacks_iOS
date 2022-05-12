@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Awesome
+//import Awesome
 
 struct HeaderComponent: View {
     @State private var date: String = ""
@@ -27,13 +27,14 @@ struct HeaderComponent: View {
                     if !hasScrolled {
                         Text("Featured Today")
                             .font(.system(size: 25)).bold()
-                        Awesome.Solid.hamburger.image
-                            .foregroundColor(.brown)
-                            .font(.title)
+//                        Awesome.Solid.hamburger.image
+//                            .foregroundColor(.brown)
+//                            .font(.title)
                     } else {
-                        Awesome.Solid.hamburger.image
-                            .foregroundColor(.brown)
-                            .font(.title)
+                        Image(systemName: "sun.min")
+//                        Awesome.Solid.hamburger.image
+//                            .foregroundColor(.brown)
+//                            .font(.title)
                     }
                     
                     Spacer()
