@@ -15,7 +15,9 @@ struct PopularCard: View {
             Image("salad")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 150, height: 150)
+                .frame(maxWidth: .infinity)
+                .frame(height: 150)
+            
                 .mask(RoundedRectangle(cornerRadius: 20, style: .continuous))
             VStack(alignment: .center) {
                 Text("Greek Salad")
@@ -28,7 +30,7 @@ struct PopularCard: View {
             }
             .padding()
         }
-        .frame(width: 140, height: 200)
+        .frame(width: 160, height: 200)
         .background(.white)
         .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
         .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 3)
@@ -37,7 +39,7 @@ struct PopularCard: View {
             showDetails = true
         }
         .sheet(isPresented: $showDetails) {
-            Text("Details")
+            RecipeView()
         }
     }
 }

@@ -52,12 +52,12 @@ struct CardComponent: View {
                     }
                 }
         )
-        .padding()
+//        .padding()
         .onTapGesture {
             showDetails = true
         }
         .sheet(isPresented: $showDetails) {
-            Text("Details")
+            RecipeView()
         }
     }
 }
