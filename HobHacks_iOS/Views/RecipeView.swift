@@ -11,6 +11,7 @@ struct RecipeView: View {
     @State private var rating: Int = 0
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var showBackButton: Bool = true
+    @State private var ratingSelected: Bool = false
     
     let maxRating: Int = 5
     var body: some View {
@@ -131,8 +132,12 @@ struct RecipeView: View {
                     Image(systemName: number < rating ? "star.fill" : "star")
                         .foregroundColor(.pink)
                         .font(.title3)
+                        .scaleEffect(ratingSelected ? 1.2 : 1)
                         .onTapGesture {
-                            rating = number + 1
+                            withAnimation {
+                                rating = number + 1
+                                ratingSelected.toggle()
+                            }
                             print("Rating>", rating)
                         }
                 }

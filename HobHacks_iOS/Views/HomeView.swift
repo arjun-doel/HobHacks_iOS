@@ -9,6 +9,7 @@ import SwiftUI
 //import Awesome
 
 struct HomeView: View {
+    @EnvironmentObject var homeVM: HomeViewModel
     @State private var hasScrolled: Bool = false
     private var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -31,6 +32,9 @@ struct HomeView: View {
             .overlay(
                 HeaderComponent(hasScrolled: $hasScrolled)
             )
+        }
+        .task {
+            await homeVM.fetch()
         }
     }
     
@@ -92,5 +96,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(HomeViewModel())
     }
 }

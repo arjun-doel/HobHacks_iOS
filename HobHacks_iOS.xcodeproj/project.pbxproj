@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		7208F29128285CD000DC3183 /* HeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7208F29028285CD000DC3183 /* HeaderComponent.swift */; };
 		7208F29328285DE400DC3183 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7208F29228285DE400DC3183 /* Launch Screen.storyboard */; };
+		721E624128300FA2004313C8 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 721E624028300FA2004313C8 /* Apollo */; };
+		721E62442830156E004313C8 /* RecipeQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 721E62432830156E004313C8 /* RecipeQuery.graphql */; };
+		721E624628301867004313C8 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 721E624528301867004313C8 /* schema.json */; };
+		721E624D283019B6004313C8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E624C283019B6004313C8 /* Network.swift */; };
+		721E624F28301A0D004313C8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E624E28301A0D004313C8 /* HomeViewModel.swift */; };
+		721E625228301B15004313C8 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E625128301B15004313C8 /* Recipe.swift */; };
+		721E625628301EBB004313C8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E625528301EBB004313C8 /* API.swift */; };
 		727BB72D2829A7B100774192 /* PopularCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727BB72C2829A7B100774192 /* PopularCard.swift */; };
 		727BB72F2829B51B00774192 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727BB72E2829B51B00774192 /* RecipeView.swift */; };
 		72C94985282821D20037B76A /* CardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C94984282821D20037B76A /* CardComponent.swift */; };
@@ -27,6 +34,12 @@
 /* Begin PBXFileReference section */
 		7208F29028285CD000DC3183 /* HeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderComponent.swift; sourceTree = "<group>"; };
 		7208F29228285DE400DC3183 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		721E62432830156E004313C8 /* RecipeQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = RecipeQuery.graphql; sourceTree = "<group>"; };
+		721E624528301867004313C8 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		721E624C283019B6004313C8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		721E624E28301A0D004313C8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		721E625128301B15004313C8 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		721E625528301EBB004313C8 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		727BB72C2829A7B100774192 /* PopularCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCard.swift; sourceTree = "<group>"; };
 		727BB72E2829B51B00774192 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		72C94984282821D20037B76A /* CardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponent.swift; sourceTree = "<group>"; };
@@ -48,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72C9499D28283B9A0037B76A /* Awesome in Frameworks */,
+				721E624128300FA2004313C8 /* Apollo in Frameworks */,
 				72C9498F2828379D0037B76A /* FASwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +69,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		721E62422830153A004313C8 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				721E62432830156E004313C8 /* RecipeQuery.graphql */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
+		721E624A28301986004313C8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				721E624E28301A0D004313C8 /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		721E625028301B0C004313C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				721E625128301B15004313C8 /* Recipe.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		72C94983282821C30037B76A /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +117,7 @@
 		72C94990282838E70037B76A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				721E624C283019B6004313C8 /* Network.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -110,15 +149,20 @@
 		72EF609528281416001A42CD /* HobHacks_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				7208F29228285DE400DC3183 /* Launch Screen.storyboard */,
-				72C9499E282858170037B76A /* Animations */,
-				72C9499A282839A80037B76A /* HobHacks-iOS-Info.plist */,
-				72C94990282838E70037B76A /* Utils */,
+				721E625028301B0C004313C8 /* Model */,
+				721E624A28301986004313C8 /* ViewModels */,
+				721E624528301867004313C8 /* schema.json */,
+				721E625528301EBB004313C8 /* API.swift */,
+				721E62422830153A004313C8 /* Queries */,
 				72EF609628281416001A42CD /* HobHacks_iOSApp.swift */,
 				72EF609828281416001A42CD /* ContentView.swift */,
+				7208F29228285DE400DC3183 /* Launch Screen.storyboard */,
+				72C9499A282839A80037B76A /* HobHacks-iOS-Info.plist */,
+				72C94990282838E70037B76A /* Utils */,
 				72C94986282826D70037B76A /* Views */,
 				72C94983282821C30037B76A /* Components */,
 				72EF609A28281417001A42CD /* Assets.xcassets */,
+				72C9499E282858170037B76A /* Animations */,
 				72EF609C28281417001A42CD /* Preview Content */,
 			);
 			path = HobHacks_iOS;
@@ -142,6 +186,7 @@
 				72EF608F28281416001A42CD /* Sources */,
 				72EF609028281416001A42CD /* Frameworks */,
 				72EF609128281416001A42CD /* Resources */,
+				721E6247283018B0004313C8 /* Generate Apollo GraphQL API */,
 			);
 			buildRules = (
 			);
@@ -151,6 +196,7 @@
 			packageProductDependencies = (
 				72C9498E2828379D0037B76A /* FASwiftUI */,
 				72C9499C28283B9A0037B76A /* Awesome */,
+				721E624028300FA2004313C8 /* Apollo */,
 			);
 			productName = HobHacks_iOS;
 			productReference = 72EF609328281416001A42CD /* HobHacks_iOS.app */;
@@ -183,6 +229,7 @@
 			packageReferences = (
 				72C9498D2828379D0037B76A /* XCRemoteSwiftPackageReference "FASwiftUI" */,
 				72C9499B28283B9A0037B76A /* XCRemoteSwiftPackageReference "Awesome" */,
+				721E623F28300FA2004313C8 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 			);
 			productRefGroup = 72EF609428281416001A42CD /* Products */;
 			projectDirPath = "";
@@ -199,12 +246,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				7208F29328285DE400DC3183 /* Launch Screen.storyboard in Resources */,
+				721E624628301867004313C8 /* schema.json in Resources */,
 				72EF609E28281417001A42CD /* Preview Assets.xcassets in Resources */,
+				721E62442830156E004313C8 /* RecipeQuery.graphql in Resources */,
 				72EF609B28281417001A42CD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		721E6247283018B0004313C8 /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		72EF608F28281416001A42CD /* Sources */ = {
@@ -212,11 +282,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				72C94985282821D20037B76A /* CardComponent.swift in Sources */,
+				721E624D283019B6004313C8 /* Network.swift in Sources */,
 				72C94988282826E00037B76A /* HomeView.swift in Sources */,
 				72EF609928281416001A42CD /* ContentView.swift in Sources */,
 				72C949A02828582C0037B76A /* PreferenceKeys.swift in Sources */,
 				727BB72F2829B51B00774192 /* RecipeView.swift in Sources */,
+				721E625628301EBB004313C8 /* API.swift in Sources */,
 				7208F29128285CD000DC3183 /* HeaderComponent.swift in Sources */,
+				721E624F28301A0D004313C8 /* HomeViewModel.swift in Sources */,
+				721E625228301B15004313C8 /* Recipe.swift in Sources */,
 				727BB72D2829A7B100774192 /* PopularCard.swift in Sources */,
 				72EF609728281416001A42CD /* HobHacks_iOSApp.swift in Sources */,
 				72C9498C282828300037B76A /* SearchView.swift in Sources */,
@@ -431,6 +505,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		721E623F28300FA2004313C8 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.5;
+			};
+		};
 		72C9498D2828379D0037B76A /* XCRemoteSwiftPackageReference "FASwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mattmaddux/FASwiftUI.git";
@@ -450,6 +532,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		721E624028300FA2004313C8 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 721E623F28300FA2004313C8 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
 		72C9498E2828379D0037B76A /* FASwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 72C9498D2828379D0037B76A /* XCRemoteSwiftPackageReference "FASwiftUI" */;
