@@ -8,6 +8,7 @@
 import Foundation
 import Apollo
 
+@MainActor
 class HomeViewModel: ObservableObject {
     @Published public private(set) var recipes: [Recipe] = []
     

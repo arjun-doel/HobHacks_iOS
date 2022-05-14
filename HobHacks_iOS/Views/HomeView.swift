@@ -41,10 +41,10 @@ struct HomeView: View {
     var featuredSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center, spacing: 0) {
-                ForEach(0..<5) { item in
+                ForEach(homeVM.recipes) { recipe in
                     GeometryReader { geo in
                         let minX = geo.frame(in: .global).minX
-                        CardComponent()
+                        CardComponent(recipe: recipe)
                             .frame(width: 330, height: 400)
                             .rotation3DEffect(.degrees(minX / -20), axis: (x: 0, y: 1, z: 0))
                     }

@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct HobHacks_iOSApp: App {
+    @StateObject var homeViewModel = HomeViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(homeViewModel)
         }
     }
 }

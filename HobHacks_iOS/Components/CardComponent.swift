@@ -11,17 +11,26 @@ struct CardComponent: View {
     @State private var isLiked: Bool = false
     @State private var showDetails: Bool = false
     let impactMedium = UIImpactFeedbackGenerator(style: .medium)
-
+    var recipe: Recipe
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Image("demoRecipe")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 280, height: 280)
-                .mask(RoundedRectangle(cornerRadius: 30, style: . continuous))
+            AsyncImage(url: URL(string: recipe.recipeImage)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 280, height: 280)
+                    .mask(RoundedRectangle(cornerRadius: 30, style: . continuous))
+            } placeholder: {
+                Image("demoRecipe")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 280, height: 280)
+                    .mask(RoundedRectangle(cornerRadius: 30, style: . continuous))
+            }
             
             VStack(alignment: .leading, spacing: 2) {
-                Text("Shakshouka")
+                Text(recipe.recipeName)
                     .font(.title2).bold()
                     .foregroundColor(.black)
                 HStack(spacing: 2) {
@@ -52,7 +61,7 @@ struct CardComponent: View {
                     }
                 }
         )
-//        .padding()
+        //        .padding()
         .onTapGesture {
             showDetails = true
         }
@@ -62,8 +71,8 @@ struct CardComponent: View {
     }
 }
 
-struct CardComponent_Previews: PreviewProvider {
-    static var previews: some View {
-        CardComponent()
-    }
-}
+//struct CardComponent_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CardComponent()
+//    }
+//}
