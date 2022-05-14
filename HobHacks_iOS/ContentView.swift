@@ -21,6 +21,7 @@ struct ContentView: View {
                 
                 NavigationView {
                     SearchView()
+                        .navigationBarHidden(true)
                 }
                 .tabItem {
                     Image(systemName: "magnifyingglass")

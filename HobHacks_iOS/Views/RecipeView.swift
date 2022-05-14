@@ -9,6 +9,9 @@ import SwiftUI
 
 struct RecipeView: View {
     @State private var rating: Int = 0
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    var showBackButton: Bool = true
+    
     let maxRating: Int = 5
     var body: some View {
         ZStack(alignment: .top) {
@@ -44,6 +47,10 @@ struct RecipeView: View {
             .mask(RoundedRectangle(cornerRadius: 8, style: .continuous))
             .offset(x: -100, y: -100)
             
+            if showBackButton {
+                backButton
+            }
+            
             Image(systemName: "heart")
                 .foregroundColor(.pink)
                 .font(.system(size: 35))
@@ -54,6 +61,7 @@ struct RecipeView: View {
                 .offset(x: 169, y: 180)
         }
     }
+    
     
     var subsection: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -131,6 +139,22 @@ struct RecipeView: View {
             }
         }
         .padding()
+    }
+    
+    var backButton: some View {
+        Button {
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            HStack {
+                Image(systemName: "chevron.left")
+                Text("Back")
+            }
+            .frame(width: 68, height: 30)
+            .background(.regularMaterial)
+            .mask(RoundedRectangle(cornerRadius: 4, style: .continuous))
+        }
+        .tint(.pink)
+        .offset(x: -180, y: -160)
     }
 }
 

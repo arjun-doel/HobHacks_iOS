@@ -57,7 +57,7 @@ struct CardComponent: View {
             showDetails = true
         }
         .sheet(isPresented: $showDetails) {
-            RecipeView()
+            RecipeView(showBackButton: false)
         }
     }
 }

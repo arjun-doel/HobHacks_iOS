@@ -39,7 +39,7 @@ struct PopularCard: View {
             showDetails = true
         }
         .sheet(isPresented: $showDetails) {
-            RecipeView()
+            RecipeView(showBackButton: false)
         }
     }
 }
