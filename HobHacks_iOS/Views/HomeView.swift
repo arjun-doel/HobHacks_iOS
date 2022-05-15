@@ -82,8 +82,8 @@ struct HomeView: View {
             .padding()
             
             LazyVGrid(columns: twoColumnGrid) {
-                ForEach(0..<10) { item in
-                    PopularCard()
+                ForEach(homeVM.recipes) { recipe in
+                    PopularCard(recipe: recipe)
                 }
             }
         }

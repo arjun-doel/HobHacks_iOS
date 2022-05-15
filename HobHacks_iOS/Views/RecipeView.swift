@@ -42,9 +42,7 @@ struct RecipeView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             } placeholder: {
-                Image("salad")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                ProgressView()
             }
             VStack {
                 Text(recipe.recipeName)
