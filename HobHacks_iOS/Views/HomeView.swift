@@ -41,15 +41,29 @@ struct HomeView: View {
     var featuredSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center, spacing: 0) {
-                ForEach(homeVM.recipes) { recipe in
-                    GeometryReader { geo in
-                        let minX = geo.frame(in: .global).minX
-                        CardComponent(recipe: recipe)
-                            .frame(width: 330, height: 400)
-                            .rotation3DEffect(.degrees(minX / -20), axis: (x: 0, y: 1, z: 0))
+                if homeVM.recipes.count > 0 {
+                    ForEach(homeVM.recipes) { recipe in
+                        GeometryReader { geo in
+                            let minX = geo.frame(in: .global).minX
+                            CardComponent(recipe: recipe)
+                                .frame(width: 330, height: 400)
+                                .rotation3DEffect(.degrees(minX / -20), axis: (x: 0, y: 1, z: 0))
+                        }
+                        .frame(width: 280, height: 400)
+                        .padding()
                     }
-                    .frame(width: 280, height: 400)
-                    .padding()
+                } else {
+                    ForEach(0..<5) { recipe in
+                        GeometryReader { geo in
+                            let minX = geo.frame(in: .global).minX
+                            CardComponentRedacted()
+                                .redacted(reason: .placeholder)
+                                .frame(width: 330, height: 400)
+                                .rotation3DEffect(.degrees(minX / -20), axis: (x: 0, y: 1, z: 0))
+                        }
+                        .frame(width: 280, height: 400)
+                        .padding()
+                    }
                 }
             }
             .padding(.vertical, 20)
