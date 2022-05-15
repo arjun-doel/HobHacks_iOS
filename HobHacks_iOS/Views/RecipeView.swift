@@ -9,10 +9,9 @@ import SwiftUI
 import zlib
 
 struct RecipeView: View {
-    @State private var rating: Int = 0
+    @StateObject var recipeVM = RecipeViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var showBackButton: Bool = true
-    @State private var ratingSelected: Bool = false
     var recipe: Recipe
     
     let maxRating: Int = 5
@@ -132,16 +131,15 @@ struct RecipeView: View {
                 .fontWeight(.light)
             HStack {
                 ForEach(0..<maxRating, id: \.self) { number in
-                    Image(systemName: number < rating ? "star.fill" : "star")
+                    Image(systemName: number < recipeVM.rating ? "star.fill" : "star")
                         .foregroundColor(.pink)
                         .font(.title3)
-                        .scaleEffect(ratingSelected ? 1.2 : 1)
+                        .scaleEffect(recipeVM.ratingSelected ? 1.2 : 1)
                         .onTapGesture {
                             withAnimation {
-                                rating = number + 1
-                                ratingSelected.toggle()
+                                recipeVM.rating = number + 1
+                                recipeVM.ratingSelected.toggle()
                             }
-                            print("Rating>", rating)
                         }
                 }
             }

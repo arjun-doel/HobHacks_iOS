@@ -10,7 +10,6 @@ import SwiftUI
 struct SearchView: View {
     @EnvironmentObject var homeVm: HomeViewModel
     @StateObject var searchVM = SearchViewModel()
-    @State private var value: String = ""
     
     var body: some View {
         ZStack(alignment: .top) {
