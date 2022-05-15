@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import zlib
 
 struct RecipeView: View {
     @State private var rating: Int = 0
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var showBackButton: Bool = true
+    @State private var ratingSelected: Bool = false
+    var recipe: Recipe
     
     let maxRating: Int = 5
     var body: some View {
@@ -34,12 +37,16 @@ struct RecipeView: View {
     
     var hero: some View {
         ZStack {
-            Image("salad")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            AsyncImage(url: URL(string: recipe.recipeImage)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } placeholder: {
+                ProgressView()
+            }
             VStack {
-                Text("Greek Salad")
-                    .font(.largeTitle)
+                Text(recipe.recipeName)
+                    .font(.title2)
                     .foregroundColor(.black)
             }
             .frame(width: 240, height: 60)
@@ -68,7 +75,7 @@ struct RecipeView: View {
             HStack(spacing: 0) {
                 Image(systemName: "mappin")
                     .foregroundColor(.red)
-                Text("Greece")
+                Text(recipe.origin)
                     .font(.title3)
                     .fontWeight(.medium)
             }
@@ -90,12 +97,13 @@ struct RecipeView: View {
             Text("Ingredients")
                 .font(.title3)
             
-            ForEach(0 ..< 5) { item in
+            ForEach(recipe.recipeIngredients, id: \.self) { item in
                 VStack {
-                    Text("Olive Oil - 10ml")
+                    Text(item ?? "")
+                        .font(.system(size: 17))
                         .padding()
                 }
-                .frame(width: 200, height: 50, alignment: .leading)
+                .frame(width: 300, height: 50, alignment: .leading)
                 .background(.white)
                 .mask(RoundedRectangle(cornerRadius: 10, style: .continuous))
                 .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 2)
@@ -111,11 +119,7 @@ struct RecipeView: View {
                 .padding()
                 .font(.title3)
             VStack(alignment: .leading) {
-                Text("""
-                     STEP 1 Place 4 large vine tomatoes, cut into wedges, 1 peeled, deseeded and chopped cucumber, ½ a thinly sliced red onion, 16 Kalamata olives, 1 tsp dried oregano, 85g feta cheese chunks and 4 tbsp Greek extra virgin olive oil in a large bowl.
-                     
-                     STEP 2 Lightly season, then serve with crusty bread to mop up all of the juices.
-                     """)
+                Text(recipe.recipeMethodLong)
                 .frame(alignment: .leading)
             }
             .padding(.horizontal, 20)
@@ -131,8 +135,12 @@ struct RecipeView: View {
                     Image(systemName: number < rating ? "star.fill" : "star")
                         .foregroundColor(.pink)
                         .font(.title3)
+                        .scaleEffect(ratingSelected ? 1.2 : 1)
                         .onTapGesture {
-                            rating = number + 1
+                            withAnimation {
+                                rating = number + 1
+                                ratingSelected.toggle()
+                            }
                             print("Rating>", rating)
                         }
                 }
@@ -158,8 +166,8 @@ struct RecipeView: View {
     }
 }
 
-struct RecipeView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeView()
-    }
-}
+//struct RecipeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecipeView()
+//    }
+//}

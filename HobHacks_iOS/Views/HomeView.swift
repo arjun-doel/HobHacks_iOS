@@ -9,6 +9,7 @@ import SwiftUI
 //import Awesome
 
 struct HomeView: View {
+    @EnvironmentObject var homeVM: HomeViewModel
     @State private var hasScrolled: Bool = false
     private var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -32,20 +33,37 @@ struct HomeView: View {
                 HeaderComponent(hasScrolled: $hasScrolled)
             )
         }
+        .task {
+            await homeVM.fetch()
+        }
     }
     
     var featuredSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center, spacing: 0) {
-                ForEach(0..<5) { item in
-                    GeometryReader { geo in
-                        let minX = geo.frame(in: .global).minX
-                        CardComponent()
-                            .frame(width: 330, height: 400)
-                            .rotation3DEffect(.degrees(minX / -20), axis: (x: 0, y: 1, z: 0))
+                if homeVM.recipes.count > 0 {
+                    ForEach(homeVM.recipes) { recipe in
+                        GeometryReader { geo in
+                            let minX = geo.frame(in: .global).minX
+                            CardComponent(recipe: recipe)
+                                .frame(width: 330, height: 400)
+                                .rotation3DEffect(.degrees(minX / -20), axis: (x: 0, y: 1, z: 0))
+                        }
+                        .frame(width: 280, height: 400)
+                        .padding()
                     }
-                    .frame(width: 280, height: 400)
-                    .padding()
+                } else {
+                    ForEach(0..<5) { recipe in
+                        GeometryReader { geo in
+                            let minX = geo.frame(in: .global).minX
+                            CardComponentRedacted()
+                                .redacted(reason: .placeholder)
+                                .frame(width: 330, height: 400)
+                                .rotation3DEffect(.degrees(minX / -20), axis: (x: 0, y: 1, z: 0))
+                        }
+                        .frame(width: 280, height: 400)
+                        .padding()
+                    }
                 }
             }
             .padding(.vertical, 20)
@@ -64,8 +82,8 @@ struct HomeView: View {
             .padding()
             
             LazyVGrid(columns: twoColumnGrid) {
-                ForEach(0..<10) { item in
-                    PopularCard()
+                ForEach(homeVM.recipes) { recipe in
+                    PopularCard(recipe: recipe)
                 }
             }
         }
@@ -92,5 +110,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(HomeViewModel())
     }
 }

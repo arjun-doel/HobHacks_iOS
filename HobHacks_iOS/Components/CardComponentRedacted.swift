@@ -7,36 +7,27 @@
 
 import SwiftUI
 
-struct CardComponent: View {
+struct CardComponentRedacted: View {
     @State private var isLiked: Bool = false
     @State private var showDetails: Bool = false
     let impactMedium = UIImpactFeedbackGenerator(style: .medium)
-    var recipe: Recipe
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            AsyncImage(url: URL(string: recipe.recipeImage)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 280, height: 280)
-                    .mask(RoundedRectangle(cornerRadius: 30, style: . continuous))
-            } placeholder: {
-                Image("demoRecipe")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 280, height: 280)
-                    .mask(RoundedRectangle(cornerRadius: 30, style: . continuous))
-            }
+            Image("demoRecipe")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 280, height: 280)
+                .mask(RoundedRectangle(cornerRadius: 30, style: . continuous))
             
             VStack(alignment: .leading, spacing: 2) {
-                Text(recipe.recipeName)
+                Text("Greek Salad")
                     .font(.title2).bold()
                     .foregroundColor(.black)
                 HStack(spacing: 2) {
                     Image(systemName: "mappin")
                         .font(.subheadline)
-                    Text(recipe.origin)
+                    Text("Greece")
                         .font(.subheadline)
                 }
             }
@@ -65,14 +56,14 @@ struct CardComponent: View {
         .onTapGesture {
             showDetails = true
         }
-        .sheet(isPresented: $showDetails) {
-            RecipeView(showBackButton: false, recipe: recipe)
-        }
+//        .sheet(isPresented: $showDetails) {
+//            RecipeView(showBackButton: false, recipe: recipe)
+//        }
     }
 }
 
-//struct CardComponent_Previews: PreviewProvider {
+//struct CardComponentRedacted_Previews: PreviewProvider {
 //    static var previews: some View {
-//        CardComponent()
+//        CardComponentRedacted()
 //    }
 //}

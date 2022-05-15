@@ -1,0 +1,22 @@
+query Recipe {
+  recipeCollection {
+    recipes: items {
+      sys {
+        id
+        publishedAt
+      }
+      recipeName
+      recipeType
+      recipeMethodLong
+      origin
+      recipeImage {
+        url
+      }
+      recipeVideo
+      recipeRating
+      recipeSource
+      recipeCategories
+      recipeIngredients
+    }
+  }
+}

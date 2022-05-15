@@ -9,23 +9,27 @@ import SwiftUI
 
 struct PopularCard: View {
     @State private var showDetails: Bool = false
-
+    var recipe: Recipe
+    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            Image("salad")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: .infinity)
-                .frame(height: 150)
-            
-                .mask(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            AsyncImage(url: URL(string: recipe.recipeImage)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 150)
+                    .mask(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            } placeholder: {
+                ProgressView()
+            }
             VStack(alignment: .center) {
-                Text("Greek Salad")
+                Text(recipe.recipeName)
                     .font(.body)
                     .fontWeight(.light)
-                    Text("Greece")
-                        .font(.caption)
-                        .fontWeight(.thin)
+                Text(recipe.origin)
+                    .font(.caption)
+                    .fontWeight(.thin)
                 Spacer()
             }
             .padding()
@@ -39,13 +43,13 @@ struct PopularCard: View {
             showDetails = true
         }
         .sheet(isPresented: $showDetails) {
-            RecipeView(showBackButton: false)
+            RecipeView(showBackButton: false, recipe: recipe)
         }
     }
 }
 
-struct PopularCard_Previews: PreviewProvider {
-    static var previews: some View {
-        PopularCard()
-    }
-}
+//struct PopularCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PopularCard()
+//    }
+//}
