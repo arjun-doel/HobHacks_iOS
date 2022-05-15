@@ -36,7 +36,7 @@ struct CardComponent: View {
                 HStack(spacing: 2) {
                     Image(systemName: "mappin")
                         .font(.subheadline)
-                    Text("Maghreb")
+                    Text(recipe.origin)
                         .font(.subheadline)
                 }
             }
@@ -66,7 +66,7 @@ struct CardComponent: View {
             showDetails = true
         }
         .sheet(isPresented: $showDetails) {
-            RecipeView(showBackButton: false)
+            RecipeView(showBackButton: false, recipe: recipe)
         }
     }
 }

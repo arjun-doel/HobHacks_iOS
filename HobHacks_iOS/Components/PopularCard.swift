@@ -38,9 +38,9 @@ struct PopularCard: View {
         .onTapGesture {
             showDetails = true
         }
-        .sheet(isPresented: $showDetails) {
-            RecipeView(showBackButton: false)
-        }
+//        .sheet(isPresented: $showDetails) {
+//            RecipeView(showBackButton: false, recipe: rec)
+//        }
     }
 }
 

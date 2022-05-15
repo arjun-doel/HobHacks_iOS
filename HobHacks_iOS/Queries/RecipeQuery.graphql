@@ -2,17 +2,21 @@ query Recipe {
   recipeCollection {
     recipes: items {
       sys {
+        id
         publishedAt
-                    id
       }
       recipeName
+      recipeType
+      recipeMethodLong
       origin
-      type
-      ingredients
-      categories
       recipeImage {
         url
       }
+      recipeVideo
+      recipeRating
+      recipeSource
+      recipeCategories
+      recipeIngredients
     }
   }
 }

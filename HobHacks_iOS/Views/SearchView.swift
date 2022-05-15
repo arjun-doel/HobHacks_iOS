@@ -15,14 +15,14 @@ struct SearchView: View {
             NavigationView {
                 VStack {
                     searchField
-                    List(0 ..< 5) { item in
-                        NavigationLink(destination: {
-                            RecipeView(showBackButton: true)
-                                .navigationBarHidden(true)
-                        }, label: {
-                            listRow
-                        })
-                    }
+//                    List(0 ..< 5) { item in
+//                        NavigationLink(destination: {
+//                            RecipeView(showBackButton: true)
+//                                .navigationBarHidden(true)
+//                        }, label: {
+//                            listRow
+//                        })
+//                    }
                 }
                 .navigationBarHidden(true)
             }
